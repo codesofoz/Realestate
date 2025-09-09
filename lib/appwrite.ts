@@ -1,26 +1,24 @@
 import * as Linking from "expo-linking";
 import { openAuthSessionAsync } from "expo-web-browser";
 import {
-    Account,
-    Avatars,
-    Client,
-    Databases,
-    OAuthProvider,
-    Query,
-    Storage
+  Account,
+  Avatars,
+  Client,
+  Databases,
+  OAuthProvider,
+  Query,
+  Storage
 } from "react-native-appwrite";
 
 export const config = {
-  platform: "com.jsm.restate",
+  platform: "com.osama.realestate",
   endpoint: process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT,
   projectId: process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID,
   databaseId: process.env.EXPO_PUBLIC_APPWRITE_DATABASE_ID,
-  galleriesCollectionId:
-    process.env.EXPO_PUBLIC_APPWRITE_GALLERIES_COLLECTION_ID,
-  reviewsCollectionId: process.env.EXPO_PUBLIC_APPWRITE_REVIEWS_COLLECTION_ID,
-  agentsCollectionId: process.env.EXPO_PUBLIC_APPWRITE_AGENTS_COLLECTION_ID,
-  propertiesCollectionId:
-    process.env.EXPO_PUBLIC_APPWRITE_PROPERTIES_COLLECTION_ID,
+  galleriesTableId: process.env.EXPO_PUBLIC_APPWRITE_GALLERIES_TABLE_ID,
+  reviewsTableId: process.env.EXPO_PUBLIC_APPWRITE_REVIEWS_TABLE_ID,
+  agentsTableId: process.env.EXPO_PUBLIC_APPWRITE_AGENTS_TABLE_ID,
+  propertiesTableId: process.env.EXPO_PUBLIC_APPWRITE_PROPERTIES_TABLE_ID,
   bucketId: process.env.EXPO_PUBLIC_APPWRITE_BUCKET_ID,
 };
 
@@ -100,7 +98,7 @@ export async function getLatestProperties() {
   try {
     const result = await databases.listDocuments(
       config.databaseId!,
-      config.propertiesCollectionId!,
+      config.propertiesTableId!,
       [Query.orderAsc("$createdAt"), Query.limit(5)]
     );
 
@@ -139,7 +137,7 @@ export async function getProperties({
 
     const result = await databases.listDocuments(
       config.databaseId!,
-      config.propertiesCollectionId!,
+      config.propertiesTableId!,
       buildQuery
     );
 
@@ -155,7 +153,7 @@ export async function getPropertyById({ id }: { id: string }) {
   try {
     const result = await databases.getDocument(
       config.databaseId!,
-      config.propertiesCollectionId!,
+      config.propertiesTableId!,
       id
     );
     return result;
