@@ -1,7 +1,9 @@
+import seed from "@/lib/seed";
 import { router, useLocalSearchParams } from "expo-router";
 import { useEffect } from "react";
 import {
   ActivityIndicator,
+  Button,
   FlatList,
   Image,
   Text,
@@ -16,7 +18,6 @@ import { Card, FeaturedCard } from "@/components/Cards";
 import Filters from "@/components/Filters";
 import NoResults from "@/components/NoResults";
 import Search from "@/components/Search";
-``
 
 import { getLatestProperties, getProperties } from "@/lib/appwrite";
 import { useGlobalContext } from "@/lib/global-provider";
@@ -131,7 +132,7 @@ const Home = () => {
               )}
             </View>
 
-            {/* <Button title="seed" onPress={seed} /> */}
+            <Button title="seed" onPress={seed} />
 
             <View className="mt-5">
               <View className="flex flex-row items-center justify-between">
