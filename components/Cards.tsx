@@ -1,5 +1,5 @@
-import images from "@/assets/images";
 import icons from "@/constants/icons";
+import images from "@/constants/images";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { Models } from "react-native-appwrite";
 
